@@ -7,6 +7,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "check": "astro check",
     "format": "prettier --write src/**",
     "deploy": "git push dokku main"
   },

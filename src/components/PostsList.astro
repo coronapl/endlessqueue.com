@@ -1,6 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-const posts = await getCollection("posts");
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { posts } = Astro.props as Props;
 ---
 
 <main class="container">

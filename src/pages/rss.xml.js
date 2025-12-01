@@ -13,9 +13,11 @@ export async function GET(context) {
       "A simple explorative journey through the fascinating world of computer science, cloud computing, and AI",
     site: context.site,
     items: posts.map((post) => ({
-      link: `/posts/${post.id}/`,
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      description: post.data.description,
       content: sanitizeHtml(parser.render(post.body)),
-      ...post.data,
+      link: `/posts/${post.id}/`,
     })),
     customData: `<language>en-us</language>`,
   });
