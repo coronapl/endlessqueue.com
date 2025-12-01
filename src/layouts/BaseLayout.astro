@@ -1,6 +1,12 @@
 ---
 import "../styles/global.css";
-const { pageTitle, pageDescription } = Astro.props;
+
+interface Props {
+  pageTitle: string;
+  pageDescription: string;
+}
+
+const { pageTitle, pageDescription } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -44,6 +50,9 @@ const { pageTitle, pageDescription } = Astro.props;
       title="Endless Queue"
       href={new URL("rss.xml", Astro.site)}
     />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Analytics -->
     <script

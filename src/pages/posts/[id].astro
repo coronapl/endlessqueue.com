@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Post from "../../components/Post.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+if (!post.data.title || !post.data.description || !post.data.pubDate) {
+  return Astro.redirect("/404");
+}
+---
+
+<BaseLayout
+  pageTitle={`${post.data.title} | Endless Queue`}
+  pageDescription={post.data.description}
+>
+  <Post title={post.data.title} pubDate={post.data.pubDate}>
+    <Content />
+  </Post>
+</BaseLayout>

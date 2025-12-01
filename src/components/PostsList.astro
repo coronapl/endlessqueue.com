@@ -1,23 +1,24 @@
 ---
-import type { Post } from "../types";
-
-const matches = import.meta.glob("../pages/posts/*.md", { eager: true });
-const posts = Object.values(matches).reverse() as Post[];
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
 ---
 
 <main class="container">
   {
     posts.map((post) => (
       <article>
-        <a href={post.url}>
-          <h4>{post.frontmatter.title}</h4>
+        <a href={`posts/${post.id}`}>
+          <h4>{post.data.title}</h4>
         </a>
         <small>
-          {new Date(post.frontmatter.pubDate).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {new Date(post.data.pubDate?.toString() ?? "").toLocaleDateString(
+            "en-US",
+            {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            },
+          )}
         </small>
       </article>
     ))
