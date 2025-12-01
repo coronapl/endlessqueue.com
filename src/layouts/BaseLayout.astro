@@ -44,6 +44,12 @@ const { pageTitle, pageDescription } = Astro.props;
       title="Endless Queue"
       href={new URL("rss.xml", Astro.site)}
     />
+
+    <!-- Analytics -->
+    <script
+      is:inline
+      src="https://u.endlessqueue.com/script.js"
+      data-website-id="0a7ee569-5407-4509-a661-a88d3ff47feb"></script>
   </head>
   <body>
     <slot />
