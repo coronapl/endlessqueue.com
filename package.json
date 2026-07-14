@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
+    "preview": "pnpm run build && wrangler dev",
     "astro": "astro",
     "format": "prettier --write src/**",
-    "deploy": "git push dokku main"
+    "deploy": "pnpm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/cloudflare": "12",
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
@@ -22,6 +24,7 @@
     "markdown-it": "^14.1.0",
     "prettier": "^3.7.3",
     "prettier-plugin-astro": "^0.14.1",
-    "sanitize-html": "^2.17.0"
+    "sanitize-html": "^2.17.0",
+    "wrangler": "^4.110.0"
   }
 }
