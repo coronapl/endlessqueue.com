@@ -3,15 +3,14 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import PostsList from "../components/PostsList.astro";
+import { sortPosts } from "../utils/posts";
 
 const pageTitle = "Endless Queue";
 const pageDescription =
   "A simple explorative journey through the fascinating world of computer science, cloud computing, and AI";
 
 const posts = await getCollection("posts");
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
-);
+const sortedPosts = sortPosts(posts);
 ---
 
 <BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
