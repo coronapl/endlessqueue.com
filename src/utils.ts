@@ -9,3 +9,11 @@ export function sortPosts(
       a.id.localeCompare(b.id),
   );
 }
+
+export function formatDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}

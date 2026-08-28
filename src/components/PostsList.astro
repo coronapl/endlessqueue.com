@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../utils";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
@@ -15,16 +16,7 @@ const { posts } = Astro.props as Props;
         <a href={`posts/${post.id}`}>
           <h4>{post.data.title}</h4>
         </a>
-        <small>
-          {new Date(post.data.pubDate?.toString() ?? "").toLocaleDateString(
-            "en-US",
-            {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            },
-          )}
-        </small>
+        <small>{formatDate(post.data.pubDate)}</small>
       </article>
     ))
   }

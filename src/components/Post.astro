@@ -1,4 +1,6 @@
 ---
+import { formatDate } from "../utils";
+
 interface Props {
   title: string;
   pubDate: Date;
@@ -13,18 +15,10 @@ const { title, pubDate } = Astro.props as Props;
       <li><a href="/">{"< Back"}</a></li>
     </ul>
   </nav>
-  <hgroup>
-    <h2>{title}</h2>
-    <h3 style="margin-top: 1rem;">
-      {
-        new Date(pubDate).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      }
-    </h3>
-  </hgroup>
+  <h2>{title}</h2>
+  <small>
+    {formatDate(pubDate)}
+  </small>
   <hr />
   <section>
     <slot />
