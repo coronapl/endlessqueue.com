@@ -22,6 +22,7 @@ if (!post.data.title || !post.data.description || !post.data.pubDate) {
 <BaseLayout
   pageTitle={`${post.data.title} | Endless Queue`}
   pageDescription={post.data.description}
+  type="article"
 >
   <Post title={post.data.title} pubDate={post.data.pubDate}>
     <Content />

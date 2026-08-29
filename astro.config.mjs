@@ -6,5 +6,10 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://endlessqueue.com",
+  markdown: {
+    shikiConfig: {
+      theme: "github-light-default",
+    },
+  },
   integrations: [mdx(), sitemap()],
 });

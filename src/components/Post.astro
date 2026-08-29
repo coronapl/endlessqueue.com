@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "../utils";
+import "../styles/content.css";
 
 interface Props {
   title: string;
@@ -9,18 +10,13 @@ interface Props {
 const { title, pubDate } = Astro.props as Props;
 ---
 
-<main class="container">
-  <nav aria-label="breadcrumb">
-    <ul>
-      <li><a href="/">{"< Back"}</a></li>
-    </ul>
-  </nav>
-  <h2>{title}</h2>
-  <small>
+<main class="post">
+  <a class="post-back-link" href="/">&larr; All posts</a>
+  <h1 class="post-heading">{title}</h1>
+  <time class="post-meta" datetime={pubDate.toISOString()}>
     {formatDate(pubDate)}
-  </small>
-  <hr />
-  <section>
+  </time>
+  <div class="post-content">
     <slot />
-  </section>
+  </div>
 </main>

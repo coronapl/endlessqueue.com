@@ -1,12 +1,14 @@
 ---
 import "../styles/global.css";
+import { baseTitle } from "../constants";
 
 interface Props {
   pageTitle: string;
   pageDescription: string;
+  type: "website" | "article";
 }
 
-const { pageTitle, pageDescription } = Astro.props as Props;
+const { pageTitle, pageDescription, type } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -15,18 +17,30 @@ const { pageTitle, pageDescription } = Astro.props as Props;
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="color-scheme" content="light dark" />
-    <script>
-      import "../scripts/theme";
-    </script>
-    <link rel="stylesheet" href="/pico.cyan.min.css" />
+    <meta name="color-scheme" content="light" />
+
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-sans-v23-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/source-serif-4-v14-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <title>{pageTitle}</title>
 
     <!-- SEO -->
     <meta name="description" content={pageDescription} />
     <meta
       name="keywords"
-      content="Endless Queue, AI, artificial intelligence, cloud computing, tech blog, AWS, computer science"
+      content="Endless Queue, coding, TIL, tech blog, computer science"
     />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
@@ -35,19 +49,20 @@ const { pageTitle, pageDescription } = Astro.props as Props;
     <meta property="og:description" content={pageDescription} />
 
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-    <meta property="og:site_name" content="Endless Queue" />
-    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={baseTitle} />
+    <meta property="og:type" content={type} />
 
     <meta property="og:image" content={new URL("og-image.png", Astro.site)} />
-    <meta property="og:image:alt" content="Endless Queue blog logo" />
+    <meta property="og:image:alt" content={`${baseTitle} blog logo`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- RSS Feed -->
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="Endless Queue"
+      title={baseTitle}
       href={new URL("rss.xml", Astro.site)}
     />
 
@@ -55,9 +70,13 @@ const { pageTitle, pageDescription } = Astro.props as Props;
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
-    <slot />
-    <footer class="container">
-      <small>© {new Date().getFullYear()} Endless Queue</small>
-    </footer>
+    <div class="container">
+      <slot />
+      <footer class="footer-wrapper">
+        <small class="footer-text"
+          >© {new Date().getFullYear()} {baseTitle}</small
+        >
+      </footer>
+    </div>
   </body>
 </html>

@@ -1,16 +1,14 @@
-<header class="container">
-  <nav>
-    <ul>
-      <li class="title-container">
-        <div class="title-dot"></div>
-        <h2 class="title-font">Endless Queue</h2>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <a target="_blank" href="https://github.com/coronapl">Github</a>
-      </li>
-    </ul>
-  </nav>
+---
+import { baseTitle, headerDescription } from "../constants";
+---
+
+<header class="header-wrapper">
+  <h1 class="header-title">{baseTitle}</h1>
+  <p class="header-description">
+    {headerDescription}
+  </p>
+  <p class="header-link">
+    <a target="_blank" href="https://github.com/coronapl">GitHub</a>
+  </p>
   <slot />
 </header>

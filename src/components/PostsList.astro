@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { formatDate } from "../utils";
+import PostItem from "./PostItem.astro";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
@@ -9,15 +9,6 @@ interface Props {
 const { posts } = Astro.props as Props;
 ---
 
-<main class="container">
-  {
-    posts.map((post) => (
-      <article>
-        <a href={`posts/${post.id}`}>
-          <h4>{post.data.title}</h4>
-        </a>
-        <small>{formatDate(post.data.pubDate)}</small>
-      </article>
-    ))
-  }
+<main>
+  {posts.map((post) => <PostItem post={post} />)}
 </main>

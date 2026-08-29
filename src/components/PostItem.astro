@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../utils";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props as Props;
+---
+
+<article class="post-item">
+  <a href={`posts/${post.id}`} aria-label={`Read post: ${post.data.title}`}>
+    <time class="post-item-date" datetime={post.data.pubDate.toISOString()}>
+      {formatDate(post.data.pubDate)}
+    </time>
+    <h2 class="post-item-title">{post.data.title}</h2>
+    <p class="post-item-excerpt">{post.data.description}</p>
+  </a>
+</article>
