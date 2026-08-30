@@ -18,14 +18,14 @@ not for protecting against key leaks.
 > compromised data key.
 
 KMS key rotation just means generating new cryptographic material for encryption
-and decryption. All previous material is only available for decrypting
-information. This makes a lot of sense considering that re-encrypting all
-information would be an extremely expensive operation.
+and decryption. All previous material is only available for decrypting data.
+This makes a lot of sense considering that re-encrypting all data would be an
+extremely expensive operation.
 
 There is a risk that after encrypting a big amount of messages with a single
-key, the encrypted information can start having subtle patterns. Though, this
-risk is very low with KMS keys as they are mostly used to encrypt other keys
-that actually encrypt the data. These keys are called "data keys". DynamoDB, for
+key, the encrypted data can start having subtle patterns. Though, this risk is
+very low with KMS keys as they are mostly used to encrypt other keys that
+actually encrypt the data. These keys are called "data keys". DynamoDB, for
 instance, has an entire hierarchy of keys that are used for encrypting the
 table:
 
