@@ -2,12 +2,10 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import PostsList from "../components/PostsList.astro";
-import { sortPosts } from "../utils";
 import { baseTitle, baseDescription } from "../constants";
+import PostsList from "../components/PostsList.astro";
 
-const posts = await getCollection("posts");
-const sortedPosts = sortPosts(posts);
+const tils = await getCollection("tils");
 ---
 
 <BaseLayout
@@ -16,5 +14,5 @@ const sortedPosts = sortPosts(posts);
   type="website"
 >
   <Header />
-  <PostsList posts={sortedPosts} />
+  <PostsList posts={tils} />
 </BaseLayout>

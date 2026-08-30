@@ -173,6 +173,22 @@ a:hover {
   color: var(--muted);
 }
 
+.post-item-excerpt {
+  margin-top: var(--space-2);
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.post-item-tags {
+  margin-top: var(--space-2);
+  color: var(--accent);
+  font-size: var(--fs-sm);
+}
+
 /* Single post */
 .post {
   padding: var(--space-12) 0 var(--space-20);

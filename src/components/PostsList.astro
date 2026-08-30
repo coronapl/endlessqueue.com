@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import PostItem from "./PostItem.astro";
+import { sortPosts } from "../utils";
 
 interface Props {
-  posts: CollectionEntry<"posts">[];
+  posts: CollectionEntry<"posts">[] | CollectionEntry<"tils">[];
 }
 
 const { posts } = Astro.props as Props;
+const sortedPosts = sortPosts<Props["posts"][number]>(posts);
 ---
 
 <main>
-  {posts.map((post) => <PostItem post={post} />)}
+  {sortedPosts.map((post) => <PostItem post={post} />)}
 </main>

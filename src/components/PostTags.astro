@@ -1,0 +1,9 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props as Props;
+---
+
+<p class="post-item-tags">{tags.map((tag) => `#${tag}`).join(" ")}</p>

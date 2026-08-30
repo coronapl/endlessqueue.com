@@ -1,21 +1,29 @@
 ---
 import { formatDate } from "../utils";
 import "../styles/content.css";
+import PostTags from "./PostTags.astro";
 
 interface Props {
+  type: "til" | "post";
   title: string;
   pubDate: Date;
+  tags?: string[];
 }
 
-const { title, pubDate } = Astro.props as Props;
+const { title, type, pubDate, tags } = Astro.props as Props;
+const backLink =
+  type === "post"
+    ? { href: "/archive", text: "All posts" }
+    : { href: "/", text: "All TILs" };
 ---
 
 <main class="post">
-  <a class="post-back-link" href="/">&larr; All posts</a>
+  <a class="post-back-link" href={backLink.href}>&larr; {backLink.text}</a>
   <h1 class="post-heading">{title}</h1>
   <time class="post-meta" datetime={pubDate.toISOString()}>
     {formatDate(pubDate)}
   </time>
+  {tags && <PostTags tags={tags} />}
   <div class="post-content">
     <slot />
   </div>

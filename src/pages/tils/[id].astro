@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Post from "../../components/Post.astro";
+import { getExcerpt } from "../../utils";
+
+export async function getStaticPaths() {
+  const tils = await getCollection("tils");
+  return tils.map((til) => ({
+    params: { id: til.id },
+    props: { til },
+  }));
+}
+
+const { til } = Astro.props;
+const { Content } = await render(til);
+
+const description = getExcerpt(til.body ?? "");
+---
+
+<BaseLayout
+  pageTitle={`${til.data.title} | Endless Queue`}
+  pageDescription={description}
+  type="article"
+>
+  <Post
+    title={til.data.title}
+    pubDate={til.data.pubDate}
+    tags={til.data.tags}
+    type="til"
+  >
+    <Content />
+  </Post>
+</BaseLayout>
