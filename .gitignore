@@ -26,3 +26,6 @@ pnpm-debug.log*
 # agents
 .claude
 .codex
+
+# cloudflare
+.wrangler
