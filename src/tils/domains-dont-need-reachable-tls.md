@@ -55,3 +55,10 @@ myapp.mydomain.com {
 To my surprise, this process was almost instant for me. I could see the DNS
 record only for a few seconds before it was deleted by the Caddy module. Though,
 I can imagine that this can vary depending on the DNS propagation.
+
+## References
+
+- [Challenge Types](https://letsencrypt.org/docs/challenge-types/)
+- [How to use DNS provider modules in Caddy 2](https://caddy.community/t/how-to-use-dns-provider-modules-in-caddy-2/8148)
+- [Automatic HTTPS](https://caddyserver.com/docs/automatic-https)
+- [Build from source](https://caddyserver.com/docs/build)
