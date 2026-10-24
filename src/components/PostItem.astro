@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { formatDate, getExcerpt } from "../utils";
+import { curlyApostrophes, formatDate, getExcerpt } from "../utils";
 import PostTags from "./PostTags.astro";
 
 interface Props {
@@ -30,8 +30,8 @@ const link =
     <time class="post-item-date" datetime={pubDate.toISOString()}>
       {formatDate(pubDate)}
     </time>
-    <h2 class="post-item-title">{title}</h2>
-    <p class="post-item-excerpt">{excerpt}</p>
+    <h2 class="post-item-title">{curlyApostrophes(title)}</h2>
+    <p class="post-item-excerpt">{curlyApostrophes(excerpt)}</p>
     {data.type === "til" && <PostTags tags={data.tags} />}
   </a>
 </article>

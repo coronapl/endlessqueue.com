@@ -1,5 +1,5 @@
 .post-content {
-  margin-top: var(--space-12);
+  margin-top: var(--space-8);
 }
 
 .post-content > * + * {
@@ -11,6 +11,7 @@
   font-family: var(--serif);
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
 }
 
 .post-content h3 {
@@ -18,10 +19,13 @@
   font-family: var(--serif);
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
 }
 
 .post-content a {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
 .post-content ul,
@@ -42,21 +46,23 @@
 
 .post-content code {
   font-family: var(--mono);
-  font-size: var(--fs-base);
+  font-size: var(--fs-sm);
 }
 
 .post-content :not(pre) > code {
   padding: 0.15em 0.35em;
+  font-size: 0.85em;
   background: var(--code-bg);
   border-radius: 4px;
 }
 
 .post-content pre {
   padding: var(--space-4);
-  background: var(--code-bg);
+  /* overrides the inline style Shiki sets */
+  background: var(--code-bg) !important;
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow-x: auto;
   font-size: var(--fs-xs);
-  line-height: 1.5;
+  line-height: var(--lh-code);
 }

@@ -8,10 +8,15 @@ type: til
 My understanding was that having port 80 open was necessary to get a Let's
 Encrypt TLS certificate. This is only true when using the `HTTP-01` challenge.
 Let's Encrypt by default shares with the ACME client a token. To verify the
-domain ownership, Let's Encrypt makes a request to
-`http://<YOUR_DOMAIN>/.well-known/acme-challenge/<TOKEN>`. This option is
-unfeasible if the domain is not reachable from the public internet. In fact,
-recently I learned that your domain can point to a private IP address or to a
+domain ownership, Let's Encrypt makes a request to:
+
+```txt
+http://<YOUR_DOMAIN>/.well-known/acme-challenge/<TOKEN>
+```
+
+This option is unfeasible if the domain is not reachable from the public
+internet. In fact, recently I learned that your domain can point to a private
+IP address or to a
 [shared address space like Tailnet IPs](/tils/tailnet-ips-not-private).
 
 The solution for unreachable domains is using the `DNS-01` challenge. The ACME

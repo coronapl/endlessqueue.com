@@ -1,5 +1,5 @@
 ---
-import { formatDate } from "../utils";
+import { curlyApostrophes, formatDate } from "../utils";
 import "../styles/content.css";
 import PostTags from "./PostTags.astro";
 
@@ -19,7 +19,7 @@ const backLink =
 
 <main class="post">
   <a class="post-back-link" href={backLink.href}>&larr; {backLink.text}</a>
-  <h1 class="post-heading">{title}</h1>
+  <h1 class="post-heading">{curlyApostrophes(title)}</h1>
   <time class="post-meta" datetime={pubDate.toISOString()}>
     {formatDate(pubDate)}
   </time>

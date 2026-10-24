@@ -18,6 +18,10 @@ export function formatDate(date: Date) {
   });
 }
 
+export function curlyApostrophes(text: string): string {
+  return text.replace(/(?<=\w)'(?=\w)/g, "\u2019");
+}
+
 export function getExcerpt(body: string): string {
   return body
     .replace(/```[\s\S]*?```/g, "") // fenced code blocks
